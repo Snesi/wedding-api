@@ -5,6 +5,11 @@ var wdb = require('./weddingDB');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+app.get('/', function(req, res, next) {
+	res.send("I'm alive! Staus OK!");
+});
+
+
 app.put('/rsvp', function(req, res, next) {
 	try {
 		wdb.checkToken(req.query.token, function(guest){
@@ -21,3 +26,4 @@ app.put('/rsvp', function(req, res, next) {
 	
 });
 
+app.listen(4000);
